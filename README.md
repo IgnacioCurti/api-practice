@@ -31,4 +31,4 @@ Oui oui.
 
 || ITALIANO ||
 
-Alejito sabe italiano así que se lo dejo a él.
+Alejito sabe italiano así que se lo dejo a él...
