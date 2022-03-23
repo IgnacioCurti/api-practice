@@ -21,3 +21,9 @@ This is a private repository anyway so shouldn't be able to see this but ok.
 Je ne sais pas parler français mais j'apprendrai un jour.
 
 Oui oui.
+
+
+
+|| JAPANESE ||
+
+Kevin sabe japonés así que se lo dejo a él.
