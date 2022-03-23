@@ -24,9 +24,9 @@ Oui oui.
 
 
 
-|| JAPANESE ||
+|| 日本語 ||
 
-Kevin sabe japonés así que se lo dejo a él.
+これからギッツコマンドなどを練習しよう
 
 
 || ITALIANO ||
