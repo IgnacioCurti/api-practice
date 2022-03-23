@@ -2,7 +2,7 @@
 
 || ESPAÑOL ||
 
-Es mi primera vez trabajando con APIs en JS y de paso practico algo de Git ya que estoy.
+Es nuestra primera vez trabajando con APIs en JS y de paso practicamos algo de Git ya que estamos.
 
 Igual es un repositorio privado así que no deberías poder ver esto pero bueno.
 
@@ -10,9 +10,9 @@ Igual es un repositorio privado así que no deberías poder ver esto pero bueno.
 
 || ENGLISH ||
 
-It's my first time working with APIs in JS and while I'm on it I'll be practicing some Git.
+It's our first time working with APIs in JS and while we're on it we'll be practicing some Git.
 
-This is a private repository anyway so shouldn't be able to see this but ok.
+This is a private repository anyway so you shouldn't be able to see this but ok.
 
 
 
