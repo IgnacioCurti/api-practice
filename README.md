@@ -27,3 +27,8 @@ Oui oui.
 || JAPANESE ||
 
 Kevin sabe japonés así que se lo dejo a él.
+
+
+|| ITALIANO ||
+
+Alejito sabe italiano así que se lo dejo a él.
