@@ -32,4 +32,6 @@ Oui oui.
 
 || ITALIANO ||
 
-Alejito sabe italiano así que se lo dejo a él.
+pesto di cuesto di mama  APIs e JS molchevique dolche vita maquina.
+pizza pasta
+
