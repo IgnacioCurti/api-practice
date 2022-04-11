@@ -16,15 +16,8 @@ This is a private repository anyway so you shouldn't be able to see this but ok.
 
 
 
-|| FRANÇAIS ||
-
-Je ne sais pas parler français mais j'apprendrai un jour.
-
-Oui oui.
-
-
-
 || 日本語 ||
 
 初めてA.P.Itとギットコマンドを練習します。
+
 このリポジトリはプライベートから、アクセスするべきはありません。
