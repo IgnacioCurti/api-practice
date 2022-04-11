@@ -9,7 +9,6 @@ async function getPokemon(memberNumber){
     const urlPokemon = getFinalEvolution(evolutionaryChain.chain);
     const responseSpecies = await fetch(urlPokemon);
     const pokemonSpecies = await responseSpecies.json();
-    //console.log(pokemonSpecies);
     const pokemonNumber = pokemonSpecies.id;
     const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`);
     const pokemon = await responsePokemon.json();
@@ -41,5 +40,8 @@ function getTeam(){
 }
 
 
-function clearImg(){
+async function clearImg(id){
+    const responseUnown = await fetch("https://pokeapi.co/api/v2/pokemon-form/10027/")
+    const unown = await responseUnown.json()
+    document.getElementById(`${id}`).src = unown.sprites.front_default;
 }
