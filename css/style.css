@@ -1,0 +1,21 @@
+.body {
+  background: #FFFFFF;
+  margin: 0;
+}
+
+.noContextMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: #9517cf;
+  font-size: 2.8em;
+}
+/*# sourceMappingURL=style.css.map */
