@@ -28,10 +28,3 @@ Oui oui.
 
 初めてA.P.Itとギットコマンドを練習します。
 このリポジトリはプライベートから、アクセスするべきはありません。
-
-
-|| ITALIANO ||
-
-pesto di cuesto di mama  APIs e JS molchevique dolche vita maquina.
-pizza pasta
-
