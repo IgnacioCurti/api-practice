@@ -56,9 +56,24 @@ async function showName(url){
             id = id.slice((-2 + i))
         }
     }
-    console.log(id)
+    if (id == "ion"){
+        id = 201
+    }
+    let name = await getNameById(id) 
+    let namePlaceHolder = document.querySelector(".namePlaceHolder")
+    namePlaceHolder.textContent = name
 }
 
-for (let init = 1; init <= 6; init++ ){
-    clearImg(`${init}mon`)
+async function getNameById(id){
+    const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const pokemon = await responsePokemon.json();
+    return (pokemon.name[0].toUpperCase() + pokemon.name.slice(1))
 }
+
+function initialize(){
+    for (let init = 1; init <= 6; init++ ){
+        clearImg(`${init}mon`);
+    }
+}
+
+initialize();
