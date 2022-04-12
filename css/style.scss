@@ -25,3 +25,30 @@ body{
         }
     }
 }
+
+.images{
+    display: flex;
+    align-items: center;
+    justify-items: space-around ;
+}
+
+    
+.namePlaceHolder{
+    display: flex;
+    align-items: center;
+    justify-content: space-around ;
+
+}
+
+.randomButton{
+    display: flex;
+    align-items: center;
+    justify-content: space-around ;
+    background-color: var(--primaryColor);
+    border: #111111;
+    color: #111111;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
