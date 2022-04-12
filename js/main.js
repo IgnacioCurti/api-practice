@@ -41,7 +41,24 @@ function getTeam(){
 
 
 async function clearImg(id){
+    window.oncontextmenu = (e) => {
+        e.preventDefault();
+      }
     const responseUnown = await fetch("https://pokeapi.co/api/v2/pokemon-form/10027/")
     const unown = await responseUnown.json()
     document.getElementById(`${id}`).src = unown.sprites.front_default;
+}
+
+async function showName(url){
+    let id = url.slice(-7, -4)
+    for (let i= 0; i < 2; i++){    
+        if ((id[0] == "/") || (id[0] == "n")){
+            id = id.slice((-2 + i))
+        }
+    }
+    console.log(id)
+}
+
+for (let init = 1; init <= 6; init++ ){
+    clearImg(`${init}mon`)
 }

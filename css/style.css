@@ -1,21 +1,28 @@
-.body {
-  background: #FFFFFF;
-  margin: 0;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+:root {
+  --primaryColor: #da1d1d
+;
 }
 
-.noContextMenu {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+body {
+  background: #FFFFFF;
+  margin: 0;
+  font-family: 'Poppins';
+}
+
+.navbar {
+  background: #aaaaaa;
+  padding: 1.3em;
+}
+
+.navbar .logo {
   text-decoration: none;
   font-weight: bold;
-  color: #9517cf;
-  font-size: 2.8em;
+  color: var(--primaryColor);
+  font-size: 2.2em;
+}
+
+.navbar .logo span {
+  color: #111111;
 }
 /*# sourceMappingURL=style.css.map */

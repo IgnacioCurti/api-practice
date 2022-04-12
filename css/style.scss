@@ -1,15 +1,27 @@
-.body{
-    background: #FFFFFF;
-    margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+:root{
+    --primaryColor: #da1d1d
 }
 
-.noContextMenu{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-weight: bold;
-    color: #9517cf;
-    font-size: 2.8em;
+body{
+    background: #FFFFFF;
+    margin: 0;
+    font-family: 'Poppins';
+}
 
+.navbar{
+    background: #aaaaaa;
+    padding: 1.3em;
+
+    .logo{
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--primaryColor);
+        font-size: 2.2em;
+
+        span{
+            color: #111111;
+        }
+    }
 }
