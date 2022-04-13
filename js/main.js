@@ -65,11 +65,7 @@ function getTeam(){
 
 async function clearImg(id, initialize = true){
     const img = document.getElementById(`${id}`)
-    
-    img.oncontextmenu = (e) => {
-        e.preventDefault();
-    }
-    
+    img.addEventListener('contextmenu', event => event.preventDefault());
     if (id.slice(4) == "locked"){
         return
     }
@@ -79,7 +75,6 @@ async function clearImg(id, initialize = true){
     if (initialize){
         lockPokemon(id);
     }
-    console.log("hola")
 }
 
 async function showName(url){
