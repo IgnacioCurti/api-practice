@@ -3,8 +3,7 @@ var evolutionChainLimit = 476 - 1
 var emptySpaces = 6
 
 async function getPokemon(memberNumber){
-    const id = Math.floor(Math.random() * evolutionChainLimit) + 1;
-    const responseChain = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}`);
+    const responseChain = await fetchChain()
     const evolutionaryChain = await responseChain.json();
     const urlPokemon = getFinalEvolution(evolutionaryChain.chain);
     const responseSpecies = await fetch(urlPokemon);
@@ -14,6 +13,25 @@ async function getPokemon(memberNumber){
     const pokemon = await responsePokemon.json();
     document.getElementById(`${memberNumber}mon`).src = pokemon.sprites.front_default;  
 }
+
+async function fetchEvolution(){
+    const generatedId = Math.floor(Math.random() * evolutionChainLimit) + 1;
+    return await fetch(`https://pokeapi.co/api/v2/evolution-chain/${generatedId}`)
+}
+
+async function fetchChain(){
+    var count = 0;
+    var maxTries = 6;
+    while(true) {
+        try {
+            const generatedId = /*Math.random()>0.5 ? */Math.floor(Math.random() * evolutionChainLimit) + 1 /*: 222*/;
+            const chain = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${generatedId}`)
+            return chain
+        } catch (e) {
+        }
+    }
+}
+
 
 function getFinalEvolution(object, evoNumber = -1){
     if (evoNumber >= 0){
