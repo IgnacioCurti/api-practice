@@ -60,16 +60,18 @@ function getTeam(){
 }
 
 
+
+
+
 async function clearImg(id, initialize = true){
-    window.oncontextmenu = (e) => {
-        e.preventDefault();
-      }
+    const img = document.getElementById(`${id}`)
+    img.addEventListener('contextmenu', event => event.preventDefault());
     if (id.slice(4) == "locked"){
         return
     }
     const responseUnown = await fetch("https://pokeapi.co/api/v2/pokemon-form/10027/")
     const unown = await responseUnown.json()
-    document.getElementById(`${id}`).src = unown.sprites.front_default;
+    img.src = unown.sprites.front_default;
     if (initialize){
         lockPokemon(id);
     }
@@ -114,5 +116,7 @@ function initialize(){
         clearImg(`${init}mon`, false);
     }
 }
+
+
 
 initialize();
