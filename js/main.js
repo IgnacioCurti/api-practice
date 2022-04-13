@@ -14,11 +14,6 @@ async function getPokemon(memberNumber){
     document.getElementById(`${memberNumber}mon`).src = pokemon.sprites.front_default;  
 }
 
-async function fetchEvolution(){
-    const generatedId = Math.floor(Math.random() * evolutionChainLimit) + 1;
-    return await fetch(`https://pokeapi.co/api/v2/evolution-chain/${generatedId}`)
-}
-
 async function fetchChain(){
     var count = 0;
     var maxTries = 6;
@@ -77,7 +72,7 @@ async function clearImg(id, initialize = true){
     }
 }
 
-async function showName(url){
+function getIdByImageURL(url){
     let id = url.slice(-7, -4)
     for (let i= 0; i < 2; i++){    
         if ((id[0] == "/") || (id[0] == "n")){
@@ -87,6 +82,11 @@ async function showName(url){
     if (id == "ion"){
         id = 201
     }
+    return id
+}
+
+async function showName(url){
+    const id = getIdByImageURL(url)
     let name = await getNameById(id) 
     let namePlaceHolder = document.querySelector(".namePlaceHolder")
     namePlaceHolder.textContent = name
@@ -117,6 +117,28 @@ function initialize(){
     }
 }
 
+
+async function getPokedexText(id){
+    const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const pokemon = await responsePokemon.json();
+    const responseSpecies = await fetch(pokemon.species.url) 
+    const species = responseSpecies.json();
+    for (let i = 0; i < species.flavor_text_entries.length; i++){
+        if(species.flavor_text_entries[i].language.name = "en"){
+            return species.flavor_text_entries[i].flavor_text
+        }else{continue}
+    } 
+    return "No english pokedex entry was found"
+}
+
+async function showInfo(url){
+    const id = await getIdByImageURL(url)
+    const titleText = document.querySelector('.alertTitle');
+    titleText.textContent = await getNameById(id);
+    const bodyText = document.querySelector('.alertContent')
+    bodyText = await getPokedexText(id)
+    document.querySelector('.alert').style.visibility = 'visible';
+}
 
 
 initialize();

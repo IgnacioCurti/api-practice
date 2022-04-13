@@ -79,3 +79,57 @@ body{
     font-size: large;
 
 }
+
+.alert{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: #cccccc50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+
+.alertWindow{
+    max-width: 500px;
+    background: #FFFFFF;
+    border: 1px #FFFFFF;
+    font-size: 16px;
+    box-shadow: 0 0 15px, #00000025;
+}
+
+.alertTitleBar{
+    height: 40px;
+    background: #333333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.alertTitle{
+    margin-left: 15px;
+    font-weight: bold;
+    color: #b14fdf;
+}
+
+.alertClose{
+    width: 40px;
+    height: 40px;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #b14fdf;
+    cursor: pointer;
+}
+
+.alertClose:active{
+    transform: scale(0.8);
+}
+
+.alertContent{
+    padding: 15px;
+    font-size: 0.9em;
+}
