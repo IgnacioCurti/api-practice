@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your team</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="">PickYour<span>Team</span></a>
+        </div>
+    </div>
+
+    <h2 class="namePlaceHolder">Hover the mouse to see the name</h3>
+
+    <div class="randomButton" onclick="getTeam()">Give me a random Pokemon team</div>
+
+    <ul class="imageList">
+        <img class="image" id="1mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="firstPokemon">
+        <img class="image" id="2mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="secondPokemon">
+        <img class="image" id="3mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="thirdPokemon">
+        <img class="image" id="4mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="fourthPokemon">
+        <img class="image" id="5mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="fifthPokemon">
+        <img class="image" id="6mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="sixthPokemon">
+    </ul>
+    
+    <p class="instructions">Left-click to lock a Pokemon. Right click to remove it.</p>
+    <script src="/js/main.js"></script>
+</body>
+</html>
