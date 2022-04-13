@@ -38,12 +38,12 @@ body {
   padding: 5%;
 }
 
-.imageList .image {
+/*.imageList .image {
   width: 40%;
   border: 8px solid;
   border-radius: 400px;
   border-color: #222222;
-}
+}*/
 
 .namePlaceHolder {
   display: -webkit-box;
@@ -96,4 +96,17 @@ body {
           transform: translateX(-50%);
   font-size: large;
 }
+
+.pokeBox {
+  display: flex;
+	width: fit-content;
+	height: fit-content;
+ 	margin: auto;
+	background: #E3E3E3;
+	border-radius: 25px;
+	box-shadow: 0px 0px 20px #A9A9A9;
+	justify-content: safe center;
+	flex-wrap: wrap;
+}
+
 /*# sourceMappingURL=style.css.map */
