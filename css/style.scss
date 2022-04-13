@@ -26,10 +26,20 @@ body{
     }
 }
 
-.images{
+.imageList{
     display: flex;
     align-items: center;
-    justify-items: space-around ;
+    justify-content: space-around;
+    padding: 5%;
+    
+
+    .image{
+        width: 40%;
+        border: 8px solid;
+        border-radius: 400px;
+        border-color: #222222;
+    }
+
 }
 
     
@@ -41,15 +51,31 @@ body{
 }
 
 .randomButton{
-    display: flex;
-    align-items: center;
-    justify-content: space-around ;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    align-self: center;
+    justify-self: center;
     background-color: var(--primaryColor);
-    border: #111111;
+    border: #111111 solid;
     color: #111111;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+}
+
+.randomButton:active{
+    transform: scale(0.90) translateX(-55%);
+}
+
+.instructions{
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: large;
+
 }

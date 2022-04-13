@@ -15,19 +15,20 @@
         </div>
     </div>
 
-    <h3 class="namePlaceHolder">.</h3>
+    <h2 class="namePlaceHolder">Hover the mouse to see the name</h3>
 
     <div class="randomButton" onclick="getTeam()">Give me a random Pokemon team</div>
 
-    <ul class="images">
-        <img id="1mon" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="firstPokemon" width="280">
-        <img id="2mon" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="secondPokemon" width="280">
-        <img id="3mon" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="thirdPokemon" width="280">
-        <img id="4mon" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="fourthPokemon" width="280">
-        <img id="5mon" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="fifthPokemon" width="280">
-        <img id="6mon" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="sixthPokemon" width="280">
+    <ul class="imageList">
+        <img class="image" id="1mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="firstPokemon">
+        <img class="image" id="2mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="secondPokemon">
+        <img class="image" id="3mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="thirdPokemon">
+        <img class="image" id="4mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="fourthPokemon">
+        <img class="image" id="5mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="fifthPokemon">
+        <img class="image" id="6mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="sixthPokemon">
     </ul>
     
+    <p class="instructions">Left-click to lock a Pokemon. Right click to remove it.</p>
     <script src="/js/main.js"></script>
 </body>
 </html>

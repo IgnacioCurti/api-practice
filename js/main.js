@@ -34,19 +34,27 @@ function condition(object){
 
 
 function getTeam(){
-        for (let memberNumber = 1; memberNumber <= emptySpaces; memberNumber++){
-        getPokemon(memberNumber)
-        }
+    for (let memberNumber = 1; memberNumber <= emptySpaces; memberNumber++){
+        if(document.getElementById(`${memberNumber}monlocked`) == null){
+            getPokemon(memberNumber)
+        }else{continue}
+    }
 }
 
 
-async function clearImg(id){
+async function clearImg(id, initialize = true){
     window.oncontextmenu = (e) => {
         e.preventDefault();
       }
+    if (id.slice(4) == "locked"){
+        return
+    }
     const responseUnown = await fetch("https://pokeapi.co/api/v2/pokemon-form/10027/")
     const unown = await responseUnown.json()
     document.getElementById(`${id}`).src = unown.sprites.front_default;
+    if (initialize){
+        lockPokemon(id);
+    }
 }
 
 async function showName(url){
@@ -70,9 +78,22 @@ async function getNameById(id){
     return (pokemon.name[0].toUpperCase() + pokemon.name.slice(1))
 }
 
+
+function lockPokemon(id){
+    if (id.slice(4) == "locked"){
+        const lockedImage = document.getElementById(`${id}`)
+        lockedImage.style.borderColor = '#222222'
+        lockedImage.id = id.slice(-10, 4)
+    }else{
+        const lockedImage = document.getElementById(`${id}`) 
+        lockedImage.style.borderColor = '#da1d1d'
+        lockedImage.id  = `${id}locked`
+    }
+}
+
 function initialize(){
     for (let init = 1; init <= 6; init++ ){
-        clearImg(`${init}mon`);
+        clearImg(`${init}mon`, false);
     }
 }
 
