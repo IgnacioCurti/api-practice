@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create your team</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 
 </head>
 <body>
@@ -18,6 +20,16 @@
     <h2 class="namePlaceHolder">Hover the mouse to see the name</h3>
 
     <div class="randomButton" onclick="getTeam()">Give me a random Pokemon team</div>
+
+    <!-- <div class= "alert">
+        <div class="alertWindow">
+            <div class="alertTitleBar">
+                <span class="alertTitle"></span>
+                <button onclick="document.querySelector('.alert').style.visibility = 'hidden'" class="alertClose material-icons" >close</button>
+            </div>
+            <div class="alertContent"></div>
+        </div>
+    </div> -->
 
     <ul class="imageList">
         <li class="pokeBox"><img class="image" id="1mon" onclick="lockPokemon(id)" oncontextmenu="clearImg(id)" onmouseover="showName(src)" src="" alt="firstPokemon"></li>
