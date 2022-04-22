@@ -1,29 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
 :root {
-  --primaryColor: #da1d1d
-;
+  --primaryColor: #cc0000;
 }
 
+@font-face {
+  font-family: "Pokemon Hollow"; src: url("fonts/PokemonHollow.ttf");
+  font-family: "Pokemon"; src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot"); 
+  src: url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.woff") format("woff"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/f4d1593471d222ddebd973210265762a.svg#Pokemon") format("svg"); 
+}
+
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
 body {
-  background: #FFFFFF;
+  background-image: url("images/pokemini.png");
   margin: 0;
   font-family: 'Poppins';
 }
 
 .navbar {
-  background: #aaaaaa;
+  background: #ffffff;
   padding: 1.3em;
+  box-shadow: 0px 1px 10px black;
 }
 
 .navbar .logo {
   text-decoration: none;
   font-weight: bold;
-  color: var(--primaryColor);
-  font-size: 2.2em;
+  /*color: var(--primaryColor);*/
+  color: #ffcb05;
+  font-size: 2.5em;
+  font-family: "Pokemon";
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .navbar .logo span {
-  color: #111111;
+  color: #cc0000;
 }
 
 .imageList {
@@ -39,10 +49,15 @@ body {
 }
 
 .imageList .image {
-  width: 40%;
-  border: 8px solid;
+  width: 100%;
+  border: 1px solid;
   border-radius: 400px;
   border-color: #222222;
+  box-shadow: 2px 2px 10px black;
+
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffffff;
 }
 
 .namePlaceHolder {
@@ -68,13 +83,19 @@ body {
   -ms-grid-column-align: center;
       justify-self: center;
   background-color: var(--primaryColor);
-  border: #111111 solid;
-  color: #111111;
+  /*border: #111111 solid;*/
+  border-radius: 15px;
+  box-shadow: 0px 0px 5px black;
+  color: #ffffff;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+}
+
+.randomButton:hover {
+  background-color: #e90000;
 }
 
 .randomButton:active {
@@ -83,11 +104,26 @@ body {
 }
 
 .instructions {
+  color: #ffffff;
   display: inline-block;
   position: relative;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   font-size: large;
+  text-shadow: 1px 1px 1px black;
 }
+
+/*.pokeBox {
+  display: flex;
+	width: fit-content;
+	height: fit-content;
+ 	margin: auto;
+	background: #E3E3E3;
+	border-radius: 25px;
+	box-shadow: 0px 0px 20px #A9A9A9;
+	justify-content: safe center;
+	flex-wrap: wrap;
+}*/
+
 /*# sourceMappingURL=style.css.map */
