@@ -1,3 +1,5 @@
+const urlBase = `https://pokeapi.co/api/v2/`
+
 var evolutionChainLimit = 476 - 1
 
 var emptySpaces = 6
@@ -9,7 +11,7 @@ async function getPokemon(memberNumber){
     const responseSpecies = await fetch(urlPokemon);
     const pokemonSpecies = await responseSpecies.json();
     const pokemonNumber = pokemonSpecies.id;
-    const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`);
+    const responsePokemon = await fetch(`${urlBase}pokemon/${pokemonNumber}`);
     const pokemon = await responsePokemon.json();
     document.getElementById(`${memberNumber}mon`).src = pokemon.sprites.front_default;  
 }
@@ -20,7 +22,7 @@ async function fetchChain(){
     while(true) {
         try {
             const generatedId = /*Math.random()>0.5 ? */Math.floor(Math.random() * evolutionChainLimit) + 1 /*: 222*/;
-            const chain = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${generatedId}`)
+            const chain = await fetch(`${urlBase}evolution-chain/${generatedId}`)
             return chain
         } catch (e) {
         }
@@ -64,7 +66,7 @@ async function clearImg(id, initialize = true){
     if (id.slice(4) == "locked"){
         return
     }
-    const responseUnown = await fetch("https://pokeapi.co/api/v2/pokemon-form/10027/")
+    const responseUnown = await fetch(`${urlBase}pokemon-form/10027/`)
     const unown = await responseUnown.json()
     img.src = unown.sprites.front_default;
     if (initialize){
@@ -93,7 +95,7 @@ async function showName(url){
 }
 
 async function getNameById(id){
-    const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const responsePokemon = await fetch(`${urlBase}pokemon/${id}`);
     const pokemon = await responsePokemon.json();
     return (pokemon.name[0].toUpperCase() + pokemon.name.slice(1))
 }
@@ -119,7 +121,7 @@ function initialize(){
 
 
 async function getPokedexText(id){
-    const responsePokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    const responsePokemon = await fetch(`${urlBase}pokemon/${id}`);
     const pokemon = await responsePokemon.json();
     const responseSpecies = await fetch(pokemon.species.url) 
     const species = responseSpecies.json();
