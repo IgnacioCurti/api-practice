@@ -124,11 +124,11 @@ async function getPokedexText(id){
     const responsePokemon = await fetch(`${urlBase}pokemon/${id}`);
     const pokemon = await responsePokemon.json();
     const responseSpecies = await fetch(pokemon.species.url) 
-    const species = responseSpecies.json();
+    const species = await responseSpecies.json();
     for (let i = 0; i < species.flavor_text_entries.length; i++){
-        if(species.flavor_text_entries[i].language.name = "en"){
+        if(species.flavor_text_entries[i].language.name == "es"){
             return species.flavor_text_entries[i].flavor_text
-        }else{continue}
+        }
     } 
     return "No english pokedex entry was found"
 }
@@ -137,8 +137,9 @@ async function showInfo(url){
     const id = await getIdByImageURL(url)
     const titleText = document.querySelector('.alertTitle');
     titleText.textContent = await getNameById(id);
-    const bodyText = document.querySelector('.alertContent')
-    bodyText = await getPokedexText(id)
+    let bodyText = document.querySelector('.alertContent')
+    let text = await getPokedexText(id)
+    bodyText.textContent = text
     document.querySelector('.alert').style.visibility = 'visible';
 }
 
