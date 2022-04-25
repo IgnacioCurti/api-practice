@@ -1,6 +1,6 @@
 const urlBase = `https://pokeapi.co/api/v2/`
 
-var evolutionChainLimit = 476 - 1
+const evolutionChainLimit = 476 - 1
 
 var emptySpaces = 6
 
@@ -16,9 +16,10 @@ async function getPokemon(memberNumber){
     document.getElementById(`${memberNumber}mon`).src = pokemon.sprites.front_default;  
 }
 
+
 async function fetchChain(){
-    var count = 0;
-    var maxTries = 6;
+    let count = 0;
+    let maxTries = 6;
     while(true) {
         try {
             const generatedId = /*Math.random()>0.5 ? */Math.floor(Math.random() * evolutionChainLimit) + 1 /*: 222*/;
@@ -37,6 +38,7 @@ function getFinalEvolution(object, evoNumber = -1){
         return condition(object)
     }    
 }
+
 
 function condition(object){
     if (object.evolves_to.length > 0){
@@ -57,9 +59,6 @@ function getTeam(){
 }
 
 
-
-
-
 async function clearImg(id, initialize = true){
     const img = document.getElementById(`${id}`)
     img.addEventListener('contextmenu', event => event.preventDefault());
@@ -74,6 +73,7 @@ async function clearImg(id, initialize = true){
     }
 }
 
+
 function getIdByImageURL(url){
     let id = url.slice(-7, -4)
     for (let i= 0; i < 2; i++){    
@@ -87,12 +87,14 @@ function getIdByImageURL(url){
     return id
 }
 
+
 async function showName(url){
     const id = getIdByImageURL(url)
     let name = await getNameById(id) 
     let namePlaceHolder = document.querySelector(".namePlaceHolder")
     namePlaceHolder.textContent = name
 }
+
 
 async function getNameById(id){
     const responsePokemon = await fetch(`${urlBase}pokemon/${id}`);
@@ -113,6 +115,7 @@ function lockPokemon(id){
     }
 }
 
+
 function initialize(){
     for (let init = 1; init <= 6; init++ ){
         clearImg(`${init}mon`, false);
@@ -126,12 +129,13 @@ async function getPokedexText(id){
     const responseSpecies = await fetch(pokemon.species.url) 
     const species = await responseSpecies.json();
     for (let i = 0; i < species.flavor_text_entries.length; i++){
-        if(species.flavor_text_entries[i].language.name == "es"){
+        if(species.flavor_text_entries[i].language.name == "en"){
             return species.flavor_text_entries[i].flavor_text
         }
     } 
     return "No english pokedex entry was found"
 }
+
 
 async function showInfo(url){
     const id = await getIdByImageURL(url)

@@ -28,20 +28,21 @@
                 <span class="alertTitle"></span>
                 <button onclick="document.querySelector('.alert').style.visibility = 'hidden'" class="alertClose material-icons" >close</button>
             </div>
+            <div class="alertTypes"></div>
             <div class="alertContent"></div>
         </div>
     </div>
 
     <ul class="imageList">
-        <img class="image" id="1mon" onclick="lockPokemon(id)" oncontextmenu="showInfo(src)" onmouseover="showName(src)" src="" alt="firstPokemon">
-        <img class="image" id="2mon" onclick="lockPokemon(id)" oncontextmenu="showInfo(src)" onmouseover="showName(src)" src="" alt="secondPokemon">
-        <img class="image" id="3mon" onclick="lockPokemon(id)" oncontextmenu="showInfo(src)" onmouseover="showName(src)" src="" alt="thirdPokemon">
-        <img class="image" id="4mon" onclick="lockPokemon(id)" oncontextmenu="showInfo(src)" onmouseover="showName(src)" src="" alt="fourthPokemon">
-        <img class="image" id="5mon" onclick="lockPokemon(id)" oncontextmenu="showInfo(src)" onmouseover="showName(src)" src="" alt="fifthPokemon">
-        <img class="image" id="6mon" onclick="lockPokemon(id)" oncontextmenu="showInfo(src)" onmouseover="showName(src)" src="" alt="sixthPokemon">
+        <img class="image" id="1mon" oncontextmenu="lockPokemon(id)" onclick="showInfo(src)" onmouseover="showName(src)" src="" alt="firstPokemon">
+        <img class="image" id="2mon" oncontextmenu="lockPokemon(id)" onclick="showInfo(src)" onmouseover="showName(src)" src="" alt="secondPokemon">
+        <img class="image" id="3mon" oncontextmenu="lockPokemon(id)" onclick="showInfo(src)" onmouseover="showName(src)" src="" alt="thirdPokemon">
+        <img class="image" id="4mon" oncontextmenu="lockPokemon(id)" onclick="showInfo(src)" onmouseover="showName(src)" src="" alt="fourthPokemon">
+        <img class="image" id="5mon" oncontextmenu="lockPokemon(id)" onclick="showInfo(src)" onmouseover="showName(src)" src="" alt="fifthPokemon">
+        <img class="image" id="6mon" oncontextmenu="lockPokemon(id)" onclick="showInfo(src)" onmouseover="showName(src)" src="" alt="sixthPokemon">
     </ul>
     
-    <p class="instructions">Left-click to lock a Pokemon. Right click to get some info.</p>
+    <p class="instructions">Right-click to lock a Pokemon. Left click to get some info.</p>
     <script src="/js/main.js"></script>
 </body>
 </html>
