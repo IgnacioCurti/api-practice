@@ -1,3 +1,29 @@
+class PokemonService {
+    #baseUrl;
+    #allPokemon;
+    constructor() {
+        this.#baseUrl = "https://pokeapi.co/api/v2/";
+        this.#allPokemon = null;
+    }
+    async getAllPokemon() {
+        if (!this.#allPokemon) {
+            this.#allPokemon = await (await fetch(`${this.#baseUrl}pokemon?limit=100000&offset=0`).catch((e) => console.error(e))).json();
+        }
+        return this.#allPokemon;
+    }
+    async getPokemon(id) {
+        return await (await fetch(`${this.#baseUrl}pokemon/${id}`).catch((e) => console.error(e))).json();
+    }
+    async getRandomPokemon() {
+        const { results, count } = await this.getAllPokemon();
+        const randomPokemon = results[Math.floor(Math.random() * count)];
+        return await this.getPokemon(randomPokemon.name);
+    }
+}
+
+const pokemonService = new PokemonService();
+
+
 const urlBase = `https://pokeapi.co/api/v2/`
 
 const evolutionChainLimit = 476 - 1
@@ -21,12 +47,13 @@ async function getPokemon(memberNumber){
 }
 
 
+
 async function fetchChain(){
     // let count = 0;
     // let maxTries = 6;
     while(true) {
         try {
-            const generatedId = Math.floor(Math.random() * evolutionChainLimit) + 1 ; //Math.random()>0.5 ? Math.floor(Math.random() * evolutionChainLimit) + 1 : 222;
+            const generatedId = Math.floor(Math.random() * evolutionChainLimit) + 1 ; //const generatedId = Math.random()>0.5 ? Math.floor(Math.random() * evolutionChainLimit) + 1 : 222;
             const chain = await fetch(`${urlBase}evolution-chain/${generatedId}`)
             return chain
         } catch (e) {
@@ -142,12 +169,11 @@ async function getPokedexText(id){
 
 
 async function showInfo(url){
-    const id = await getIdByImageURL(url)
+    const id = await getIdByImageURL(url);
     const titleText = document.querySelector('.alertTitle');
     titleText.textContent = await getNameById(id);
-    let bodyText = document.querySelector('.alertContent')
-    let text = await getPokedexText(id)
-    bodyText.textContent = text
+    const bodyText = document.querySelector('.alertContent');
+    bodyText.textContent = await getPokedexText(id);
     document.querySelector('.alert').style.visibility = 'visible';
     showTypes(id);
 }
