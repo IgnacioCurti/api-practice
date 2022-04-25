@@ -4,6 +4,10 @@ const evolutionChainLimit = 476 - 1
 
 var emptySpaces = 6
 
+function title(string) {
+    return string[0].toUpperCase() + string.slice(1)
+}
+
 async function getPokemon(memberNumber){
     const responseChain = await fetchChain()
     const evolutionaryChain = await responseChain.json();
@@ -18,11 +22,11 @@ async function getPokemon(memberNumber){
 
 
 async function fetchChain(){
-    let count = 0;
-    let maxTries = 6;
+    // let count = 0;
+    // let maxTries = 6;
     while(true) {
         try {
-            const generatedId = /*Math.random()>0.5 ? */Math.floor(Math.random() * evolutionChainLimit) + 1 /*: 222*/;
+            const generatedId = Math.floor(Math.random() * evolutionChainLimit) + 1 ; //Math.random()>0.5 ? Math.floor(Math.random() * evolutionChainLimit) + 1 : 222;
             const chain = await fetch(`${urlBase}evolution-chain/${generatedId}`)
             return chain
         } catch (e) {
@@ -145,7 +149,28 @@ async function showInfo(url){
     let text = await getPokedexText(id)
     bodyText.textContent = text
     document.querySelector('.alert').style.visibility = 'visible';
+    showTypes(id);
+}
+
+
+async function showTypes(id){
+    document.getElementById(`type1`).src = ""
+    document.getElementById(`type2`).src = ""
+    const responsePokemon = await fetch(`${urlBase}pokemon/${id}`);
+    const pokemon = await responsePokemon.json();
+    let count = 1
+    for (let type of pokemon.types){
+        document.getElementById(`type${count}`).src = `css/images/types/${type.type.name}.png`
+        ++count
+    }
 }
 
 
 initialize();
+
+
+document.addEventListener('keydown', (event)=>{
+    if (event.key === ' ' || event.key === 'Escape' || event.key === 'Enter'){
+        document.querySelector('.alert').style.visibility = 'hidden'
+    }
+})
