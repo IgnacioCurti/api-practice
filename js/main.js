@@ -1,64 +1,56 @@
-class PokemonService {
-    #baseUrl;
-    #allPokemon;
-    constructor() {
-        this.#baseUrl = "https://pokeapi.co/api/v2/";
-        this.#allPokemon = null;
-    }
-    async getAllPokemon() {
-        if (!this.#allPokemon) {
-            this.#allPokemon = await (await fetch(`${this.#baseUrl}pokemon?limit=100000&offset=0`).catch((e) => console.error(e))).json();
-        }
-        return this.#allPokemon;
-    }
-    async getPokemon(id) {
-        return await (await fetch(`${this.#baseUrl}pokemon/${id}`).catch((e) => console.error(e))).json();
-    }
-    async getRandomPokemon() {
-        const { results, count } = await this.getAllPokemon();
-        const randomPokemon = results[Math.floor(Math.random() * count)];
-        return await this.getPokemon(randomPokemon.name);
-    }
-}
+// class PokemonService {
+//     #baseUrl;
+//     #allPokemonSpecies;
+//     constructor() {
+//         this.#baseUrl = "https://pokeapi.co/api/v2/";
+//         this.#pokemonSpeciesCache = null;
+//     }
+//     async getAllPokemonSpecies() {
+//         if (!this.#allPokemonSpecies) {
+//             this.#allPokemonSpecies = await (await fetch(`${this.#baseUrl}pokemon-species?limit=100000&offset=0`).catch((e) => console.error(e))).json();
+//         }
+//         return this.#allPokemonSpecies;
+//     }
+//     async getPokemon(id) {
+//         return await (await fetch(`${this.#baseUrl}pokemon-species/${id}`).catch((e) => console.error(e))).json();
+//     }
+//     async getRandomPokemon() {
+//         const { results, count } = await this.getAllPokemonSpecies();
+//         const randomPokemon = results[Math.floor(Math.random() * count)];
+//         return await this.getPokemon(randomPokemon.name);
+//     }
+// }
 
-const pokemonService = new PokemonService();
+// const pokemonService = new PokemonService();
 
 
 const urlBase = `https://pokeapi.co/api/v2/`
 
-const evolutionChainLimit = 476 - 1
+const pokemonLimit = 898 // 476 - 1
 
-var emptySpaces = 6
 
 function title(string) {
     return string[0].toUpperCase() + string.slice(1)
 }
 
-async function getPokemon(memberNumber){
-    const responseChain = await fetchChain()
-    const evolutionaryChain = await responseChain.json();
+async function getPokemon(memberNumber, currentMembers){
+    const evolutionaryChain = await fetchChain(currentMembers)
     const urlPokemon = getFinalEvolution(evolutionaryChain.chain);
-    const responseSpecies = await fetch(urlPokemon);
-    const pokemonSpecies = await responseSpecies.json();
-    const pokemonNumber = pokemonSpecies.id;
-    const responsePokemon = await fetch(`${urlBase}pokemon/${pokemonNumber}`);
-    const pokemon = await responsePokemon.json();
-    document.getElementById(`${memberNumber}mon`).src = pokemon.sprites.front_default;  
+    const pokemonSpecies = await(await fetch(urlPokemon)).json();
+    const pokemon = await (await fetch(`${urlBase}pokemon/${pokemonSpecies.id}`)).json();
+    document.getElementById(`${memberNumber}mon`).src = pokemon.sprites.front_default;
+    return pokemon.id  
 }
 
 
 
-async function fetchChain(){
-    // let count = 0;
-    // let maxTries = 6;
-    while(true) {
-        try {
-            const generatedId = Math.floor(Math.random() * evolutionChainLimit) + 1 ; //const generatedId = Math.random()>0.5 ? Math.floor(Math.random() * evolutionChainLimit) + 1 : 222;
-            const chain = await fetch(`${urlBase}evolution-chain/${generatedId}`)
-            return chain
-        } catch (e) {
-        }
-    }
+async function fetchChain(currentMembers){
+    let generatedId = undefined
+    do{
+    generatedId = Math.floor(Math.random() * pokemonLimit) + 1 ; //const generatedId = Math.random()>0.5 ? Math.floor(Math.random() * evolutionChainLimit) + 1 : 222;
+    }while(currentMembers.includes(generatedId))
+    const species = await (await fetch(`${urlBase}pokemon-species/${generatedId}`) ).json()
+    return await (await fetch(species.evolution_chain.url)).json()
 }
 
 
@@ -82,9 +74,10 @@ function condition(object){
 
 
 function getTeam(){
-    for (let memberNumber = 1; memberNumber <= emptySpaces; memberNumber++){
+    const currentMembers = [];
+    for (let memberNumber = 1; memberNumber <= 6; memberNumber++){
         if(document.getElementById(`${memberNumber}monlocked`) == null){
-            getPokemon(memberNumber)
+            currentMembers.push(getPokemon(memberNumber, currentMembers))
         }else{continue}
     }
 }
