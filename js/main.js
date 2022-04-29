@@ -1,32 +1,32 @@
-// class PokemonService {
-//     #baseUrl;
-//     #allPokemonSpecies;
-//     constructor() {
-//         this.#baseUrl = "https://pokeapi.co/api/v2/";
-//         this.#pokemonSpeciesCache = null;
-//     }
-//     async getAllPokemonSpecies() {
-//         if (!this.#allPokemonSpecies) {
-//             this.#allPokemonSpecies = await (await fetch(`${this.#baseUrl}pokemon-species?limit=100000&offset=0`).catch((e) => console.error(e))).json();
-//         }
-//         return this.#allPokemonSpecies;
-//     }
-//     async getPokemon(id) {
-//         return await (await fetch(`${this.#baseUrl}pokemon-species/${id}`).catch((e) => console.error(e))).json();
-//     }
-//     async getRandomPokemon() {
-//         const { results, count } = await this.getAllPokemonSpecies();
-//         const randomPokemon = results[Math.floor(Math.random() * count)];
-//         return await this.getPokemon(randomPokemon.name);
-//     }
-// }
+class PokemonService {
+    #baseUrl;
+    #allPokemonSpecies;
+    constructor() {
+        this.#baseUrl = "https://pokeapi.co/api/v2/";
+        this.#allPokemonSpecies = null;
+    }
+    async getAllPokemonSpecies() {
+        if (!this.#allPokemonSpecies) {
+            this.#allPokemonSpecies = await (await fetch(`${this.#baseUrl}pokemon-species?limit=100000&offset=0`).catch((e) => console.error(e))).json();
+        }
+        return this.#allPokemonSpecies;
+    }
+    async getPokemon(id) {
+        return await (await fetch(`${this.#baseUrl}pokemon-species/${id}`).catch((e) => console.error(e))).json();
+    }
+    async getRandomPokemon() {
+        const { results, count } = await this.getAllPokemonSpecies();
+        const randomPokemon = results[Math.floor(Math.random() * count)];
+        return await this.getPokemon(randomPokemon.name);
+    }
+}
 
-// const pokemonService = new PokemonService();
+const pokemonService = new PokemonService();
 
 
 const urlBase = `https://pokeapi.co/api/v2/`
 
-const pokemonLimit = 898 // 476 - 1
+const pokemonLimit = 898
 
 
 function title(string) {
@@ -43,11 +43,10 @@ async function getPokemon(memberNumber, currentMembers){
 }
 
 
-
 async function fetchChain(currentMembers){
     let generatedId = undefined
     do{
-    generatedId = Math.floor(Math.random() * pokemonLimit) + 1 ; //const generatedId = Math.random()>0.5 ? Math.floor(Math.random() * evolutionChainLimit) + 1 : 222;
+    generatedId = Math.floor(Math.random() * pokemonLimit) + 1 ;
     }while(currentMembers.includes(generatedId))
     const species = await (await fetch(`${urlBase}pokemon-species/${generatedId}`) ).json()
     return await (await fetch(species.evolution_chain.url)).json()
